@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>งาน i  -- พิชญาณัฏฐ์ รินทร์วงค์ (อินเตอร์)</title>
+<title>งาน i  -- ธนชา พรหมบุตร(ต้นน้ำ)</title>
 </head>
 <body>
-<h1>งาน i  -- พิชญาณัฏฐ์ รินทร์วงค์ (อินเตอร์)</h1>
+<h1>งาน i  -- ธนชา พรหมบุตร(ต้นน้ำ)</h1>
 
 <form method="post" action="">
     ชื่อภาค <input type="text" name="rname" autofocus required>
