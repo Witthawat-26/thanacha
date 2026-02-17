@@ -1,24 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>วิทวัส วงศ์ภาคำ(เกม)</title>
+<meta charset="utf-8">
+<title>งาน i  -- พิชญาณัฏฐ์ รินทร์วงค์ (อินเตอร์)</title>
 </head>
 <body>
-    <h1>วิทวัส วงศ์ภาคำ(เกม)</h1>
+<h1>งาน i  -- พิชญาณัฏฐ์ รินทร์วงค์ (อินเตอร์)</h1>
+
 <form method="post" action="">
-    ชื่อภาค<input type="text" name="rname"aotofocus requiewd>
+    ชื่อภาค <input type="text" name="rname" autofocus required>
     <button type="submit" name="Submit">บันทึก</button>
-/form><br><br>
+</form>
+<br><br>
 
+<?php
+include_once("connectdb.php");
 
-<?phpif(isst($_POST['Submit'])){
-    include_once("connectdb.php");
-    $rname = $_POST['rname'];
-    $sql2 = "INSERT INTO 'regions'('r_id','r_name')VALUES(NULL,'{$rname}')";
-    mysqli_qery($conn,$sql2) or die ("เพิ่มข้อมูลไม่ได้");
+if(isset($_POST['Submit'])){
+    $rname = $_POST['rname'];   // รับค่าจากฟอร์ม
 
+    $sql2 = "INSERT INTO regions (r_id, r_name) VALUES (NULL, '$rname')";
+    mysqli_query($conn, $sql2);
 }
 ?>
 
@@ -27,23 +29,26 @@
         <th>รหัสภาค</th>
         <th>ชื่อภาค</th>
         <th>ลบ</th>
-
     </tr>
+
 <?php
-include_once("connectdb.php");
-$sql = "SELECT * FROM regions ";
+$sql = "SELECT * FROM regions";
 $rs = mysqli_query($conn,$sql);
 
-while($data = mysqli_fetch_array($rs)){
+while ($data = mysqli_fetch_array($rs)){
 ?>
     <tr>
-        <td><?php echo $data['r_id'];?></td>
-        <td><?php echo $data['r_name'];?></td>
-        <td width="80" align="ceter"> <img src="images/delete.jpg" width="20"></td>
-
+        <td><?php echo $data['r_id']; ?></td>
+        <td><?php echo $data['r_name']; ?></td>
+        <td width="80" align="center"><a href ="delete_regions.php?id=<?php echo$data['r_id'];?>"onClick="return confirm('ยืนยันการลบข้อมูลไหม?');"><img src="img/delete.png" width="20">
+        </td>
     </tr>
 <?php } ?>
-</table> 
 
+</table>
 </body>
 </html>
+
+<?php
+mysqli_close($conn);
+?>
