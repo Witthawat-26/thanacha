@@ -1,26 +1,24 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>งาน i  -- ธนชา พรหมบุตร(ต้นน้ำ)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>งาน i  -- ธนชา พรหมบุตร(ต้นน้ำ)</title>
 </head>
 <body>
-<h1>งาน i  -- ธนชา พรหมบุตร(ต้นน้ำ)</h1>
-
+    <h1>งาน i  -- ธนชา พรหมบุตร(ต้นน้ำ)</h1>
 <form method="post" action="">
-    ชื่อภาค <input type="text" name="rname" autofocus required>
+    ชื่อภาค<input type="text" name="rname"aotofocus requiewd>
     <button type="submit" name="Submit">บันทึก</button>
-</form>
-<br><br>
+</form><br><br>
 
-<?php
+<?php 
 include_once("connectdb.php");
+    if(isset($_POST['Submit'])){
+    $rname = $_POST['rname'];
+    $sql2 = "INSERT INTO regions(r_id,r_name) VALUES (NULL,'{$rname}')";
+    mysqli_query($conn,$sql2) or die ("เพิ่มข้อมูลไม่ได้");   
 
-if(isset($_POST['Submit'])){
-    $rname = $_POST['rname'];   // รับค่าจากฟอร์ม
-
-    $sql2 = "INSERT INTO regions (r_id, r_name) VALUES (NULL, '$rname')";
-    mysqli_query($conn, $sql2);
 }
 ?>
 
@@ -29,26 +27,25 @@ if(isset($_POST['Submit'])){
         <th>รหัสภาค</th>
         <th>ชื่อภาค</th>
         <th>ลบ</th>
-    </tr>
 
+    </tr>
 <?php
-$sql = "SELECT * FROM regions";
+include_once("connectdb.php");
+$sql = "SELECT * FROM regions ";
 $rs = mysqli_query($conn,$sql);
 
-while ($data = mysqli_fetch_array($rs)){
+while($data = mysqli_fetch_array($rs)){
 ?>
     <tr>
-        <td><?php echo $data['r_id']; ?></td>
-        <td><?php echo $data['r_name']; ?></td>
-        <td width="80" align="center"><a href ="delete_regions.php?id=<?php echo$data['r_id'];?>"onClick="return confirm('ยืนยันการลบข้อมูลไหม?');"><img src="img/delete.png" width="20">
-        </td>
+        <td><?php echo $data['r_id'];?></td>
+        <td><?php echo $data['r_name'];?></td>
+        <td width="80" align="ceter"><a href="delete_regions.php?id=<?php echo $data['r_id']; ?>"onClick="return confirm ('ยืนยันการลบ?');"> <img src="images/delete.jpg" width="20"></td>
     </tr>
 <?php } ?>
+</table> 
 
-</table>
 </body>
 </html>
-
-<?php
-mysqli_close($conn);
+<?php 
+mysqli_close($conn)
 ?>
