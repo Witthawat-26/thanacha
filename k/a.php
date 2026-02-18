@@ -2,27 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> งาน k --ธนชา พรหมบุตร(ต้นน้ำ)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
+<button onclick="showImage('1.jpg', this)" style="background-color:green; color:white; padding:10px; border:none;">
+    เปิดรูปที่ 1
+</button>
+<button onclick="showImage('2.jpg', this)" style="background-color:orange; color:white; padding:10px; border:none;">
+    เปิดรูปที่ 2
+</button>
+<script>
 
-    <h1>ธนชา พรหมบุตร(ต้นน้ำ)</h1>
-
- 
-    <button onclick="showImage()">
-        คลิกเพื่อแสดงรูป
-    </button>
-
-    <br><br>
+function showImage(imgSrc, btn){
+    btn.innerHTML = "<img src='" + imgSrc + "' width='150'>";
+}
+</script>
 
     
-    <img id="display" width="300">
-
-    <script>
-        function showImage() {
-            document.getElementById("display").src = "1.jpg";
-        }
-    </script>
-
 </body>
 </html>
