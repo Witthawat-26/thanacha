@@ -7,7 +7,8 @@
 </head>
 <body>
     <h1>ธนชา พรหมบุตร(ต้นน้ำ)</h1>
-<td><a href=button><img src="images/1.jpg" width="200"></td>
+    <button type="submit" name="Submit">ตัวเอง</button>
+    <a href="images/11.jpg"><img src="images/11.jpg">
     
 </body>
 </html>
